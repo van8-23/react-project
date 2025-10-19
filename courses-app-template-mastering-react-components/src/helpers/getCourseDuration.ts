@@ -6,3 +6,5 @@ export const getCourseDuration = (totalMinutes: number): string => {
   const unit = h === 1 ? 'hour' : 'hours';
   return `${hh}:${mm} ${unit}`;
 };
+
+
