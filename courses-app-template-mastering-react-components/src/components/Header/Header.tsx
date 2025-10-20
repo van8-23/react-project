@@ -1,24 +1,23 @@
 
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import Logo from './components/Logo/Logo';
 import Button from '../../common/Button/Button';
 import { BUTTON_TEXT } from '../../constants/uiText';
 
 import './header.css';
 
-const Header: React.FC = () => {
-  const [isAuth, setIsAuth] = useState(true); 
+const Header = () => {
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <header className="header">
       <div className="container header__inner">
-        {/* Left side: Logo */}
         <div className="header__left">
           <Logo />
         </div>
 
-        {/* Right side: Username + Logout button */}
         <div className="header__right">
           <span className="header__user">Harry Potter</span>
           <Button
@@ -26,6 +25,7 @@ const Header: React.FC = () => {
             variant="primary"
             onClick={() => setIsAuth(!isAuth)}
           />
+          
         </div>
       </div>
     </header>

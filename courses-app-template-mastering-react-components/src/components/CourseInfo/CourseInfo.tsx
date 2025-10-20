@@ -1,9 +1,7 @@
-
-
 import React from 'react';
 
 import type { Course, Author } from '../../constants';
-import Button from '../../common/Button/Button';                
+import Button from '../../common/Button/Button';
 import { BUTTON_TEXT } from '../../constants/uiText';
 import { getAuthorNames } from '../../helpers/authors';
 import { getCourseDuration } from '../../helpers/getCourseDuration';
@@ -18,22 +16,23 @@ type Props = {
 };
 
 const CourseInfo: React.FC<Props> = ({ course, authors, onBack }) => {
-  const authorNames = getAuthorNames(course.authors, authors).join(', ');
+  const names = getAuthorNames(course.authors, authors);
 
   return (
-    <section aria-label="Course info">
+    <section className="course-info" aria-label="Course info">
       <Button buttonText={BUTTON_TEXT.BACK_TO_COURSES} onClick={onBack} />
+
       <h2 className="course-info__title">{course.title}</h2>
       <p className="course-info__desc">{course.description}</p>
+
       <ul className="course-info__list">
         <li><strong>ID:</strong> {course.id}</li>
         <li><strong>Duration:</strong> {getCourseDuration(course.duration)}</li>
         <li><strong>Creation date:</strong> {formatCreationDate(course.creationDate)}</li>
-        <li><strong>Authors:</strong> {authorNames}</li>
+        <li><strong>Authors:</strong> {names.join(', ')}</li>
       </ul>
     </section>
   );
 };
 
 export default CourseInfo;
-
